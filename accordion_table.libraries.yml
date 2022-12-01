@@ -1,0 +1,7 @@
+accordion_table:
+  js:
+    assets/js/accordion_table.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+    - theme_breakpoints_js/breakpointsLoader

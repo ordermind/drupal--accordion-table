@@ -1,0 +1,7 @@
+accordion_table.settings_form:
+  path: '/admin/config/user-interface/accordion-table'
+  defaults:
+    _form: '\Drupal\accordion_table\Form\AccordionTableSettingsForm'
+    _title: 'Accordion Table settings'
+  requirements:
+    _permission: 'administer site configuration'

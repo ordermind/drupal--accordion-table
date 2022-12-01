@@ -1,0 +1,5 @@
+accordion_table.settings_form:
+  title: 'Accordion Table'
+  description: 'Configure settings for the Accordion Table module.'
+  route_name: accordion_table.settings_form
+  parent: 'system.admin_config_ui'

@@ -1,0 +1,15 @@
+name: Accordion Table
+description: Displays tables as an accordion
+package: Tengström Modules
+
+type: module
+core_version_requirement: ^9
+configure: accordion_table.settings_form
+
+dependencies:
+  - theme_breakpoints_js:theme_breakpoints_js
+
+'interface translation project': accordion_table
+'interface translation server pattern': ./translations/accordion_table-%language.po
+
+version: 0.1.0

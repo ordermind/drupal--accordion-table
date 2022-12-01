@@ -1,0 +1,27 @@
+# Swedish translation of Accordion Table
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Accordion Table\n"
+"POT-Creation-Date: 2021-11-28 10:54+0000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Language-Team: Swedish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+msgid "Theme mapping"
+msgstr "Temamappning"
+
+msgid "Please select the breakpoints at which columns with the given priority will become visible in the table."
+msgstr "Välj de breakpoints där kolumner med den givna prioriteringen blir synliga i tabellen."
+
+msgid "Priority: @priority"
+msgstr "Prioritet: @priority"
+
+msgid "Allow multiple open rows"
+msgstr "Tillåt flera samtidiga öppna rader"
+
+msgid "If multiple open rows are allowed, they will have to be closed manually. If they are not allowed, the open row will automatically be closed upon opening a new row."
+msgstr "Om flera samtidiga öppna rader är tillåtna, måste man stänga dem manuellt. Om de däremot inte är tillåtna, kommer den öppna raden automatiskt att stängas när man öppnar en annan rad."

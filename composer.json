@@ -1,0 +1,7 @@
+{
+    "name": "drupal/accordion_table",
+    "type": "drupal-module--tengstrom",
+    "require": {
+        "drupal/theme_breakpoints_js": "^1.1"
+    }
+}

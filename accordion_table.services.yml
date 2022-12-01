@@ -1,0 +1,7 @@
+services:
+  accordion_table.css_factory:
+    class: Drupal\accordion_table\Factory\CssFactory
+    arguments: ['@config.factory', '@theme.manager', '@theme_breakpoints_js']
+  accordion_table.drupal_settings_factory:
+    class: Drupal\accordion_table\Factory\DrupalSettingsFactory
+    arguments: ['@config.factory', '@theme.manager', '@theme_breakpoints_js']
