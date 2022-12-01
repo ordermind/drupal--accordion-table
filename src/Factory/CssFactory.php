@@ -53,11 +53,6 @@ class CssFactory {
   display: none;
 }
 
-.accordion-table.responsive.has-result tr.fold:hover,
-.accordion-table.responsive.has-result tr.fold:focus {
-  background: inherit;
-}
-
 .accordion-table.responsive.has-result tr.fold .views-field {
   display: none;
 }
@@ -151,5 +146,4 @@ EOT;
 
     return 'screen';
   }
-
 }

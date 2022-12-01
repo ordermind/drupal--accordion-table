@@ -49,6 +49,7 @@ class AccordionTable extends Table implements ContainerFactoryPluginInterface {
   protected function defineOptions() {
     $options = parent::defineOptions();
 
+    $options['table_class'] = ['default' => ''];
     $options['separate_operations'] = ['default' => FALSE];
 
     return $options;
@@ -59,6 +60,13 @@ class AccordionTable extends Table implements ContainerFactoryPluginInterface {
    */
   public function buildOptionsForm(&$form, FormStateInterface $form_state) {
     parent::buildOptionsForm($form, $form_state);
+
+    $form['table_class'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Table class'),
+      '#default_value' => $this->options['table_class'],
+      '#weight' => 0,
+    ];
 
     $form['separate_operations'] = [
       '#type' => 'checkbox',
@@ -105,5 +113,4 @@ class AccordionTable extends Table implements ContainerFactoryPluginInterface {
 
     return $priorities[$lowestPriorityIndex];
   }
-
 }

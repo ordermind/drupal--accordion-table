@@ -13,6 +13,9 @@ function accordion_table_preprocess_views_view_accordiontable(&$variables) {
   $options = $view->style_plugin->options;
 
   $variables['attributes']['class'][] = 'accordion-table';
+  if (!empty($options['separate_operations'])) {
+    $variables['attributes']['class'][] = 'separate-operations-buttons';
+  }
   if (!empty($variables['responsive'])) {
     $variables['attributes']['class'][] = 'responsive';
   }
@@ -22,5 +25,7 @@ function accordion_table_preprocess_views_view_accordiontable(&$variables) {
     $variables['attributes']['class'][] = 'has-result';
   }
 
-  $variables['separate_operations'] = !empty($options['separate_operations']);
+  if (!empty($options['table_class'])) {
+    $variables['attributes']['class'] = array_merge($variables['attributes']['class'], explode(' ', $options['table_class']));
+  }
 }

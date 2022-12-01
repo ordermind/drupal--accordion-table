@@ -51,7 +51,7 @@ class AccordionTableSettingsForm extends ConfigFormBase {
     // Get enabled themes and filter out parent themes.
     $enabledThemes = array_filter(
       $this->themeHandler->listInfo(),
-      fn(Extension $themeInfo) => empty($themeInfo->sub_themes)
+      fn (Extension $themeInfo) => empty($themeInfo->sub_themes)
     );
     // Only low and medium priority need to be mapped to breakpoints - high
     // priority columns are always displayed in the table.
@@ -119,5 +119,4 @@ class AccordionTableSettingsForm extends ConfigFormBase {
       'accordion_table.settings',
     ];
   }
-
 }
