@@ -12,15 +12,15 @@ function accordion_table_preprocess_views_view_accordiontable(&$variables) {
   $view = $variables['view'];
   $options = $view->style_plugin->options;
 
+  $variables['separate_operations'] = !empty($options['separate_operations']);
+  $variables['has_result'] = !empty($variables['view']->result);
+
   $variables['attributes']['class'][] = 'accordion-table';
-  if (!empty($options['separate_operations'])) {
-    $variables['attributes']['class'][] = 'separate-operations-buttons';
-  }
+
   if (!empty($variables['responsive'])) {
     $variables['attributes']['class'][] = 'responsive';
   }
 
-  $variables['has_result'] = !empty($variables['view']->result);
   if (!empty($variables['has_result'])) {
     $variables['attributes']['class'][] = 'has-result';
   }
