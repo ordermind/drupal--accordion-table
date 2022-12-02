@@ -1,31 +1,11 @@
 <?php
 
-use Drupal\views\ViewExecutable;
-
 /**
- * Implements template_preprocess_HOOK().
+ * Implements hook_preprocess_views_view_accordiontable().
  */
 function accordion_table_preprocess_views_view_accordiontable(&$variables) {
-  template_preprocess_views_view_table($variables);
+  /** @var \Drupal\accordion_table\HookHandlers\PreprocessHandlers\PreprocessViewsViewAccordionTable $service */
+  $service = \Drupal::service('accordion_table.hook_handlers.preprocess_views_view_accordiontable');
 
-  /** @var ViewExecutable $view */
-  $view = $variables['view'];
-  $options = $view->style_plugin->options;
-
-  $variables['separate_operations'] = !empty($options['separate_operations']);
-  $variables['has_result'] = !empty($variables['view']->result);
-
-  $variables['attributes']['class'][] = 'accordion-table';
-
-  if (!empty($variables['responsive'])) {
-    $variables['attributes']['class'][] = 'responsive';
-  }
-
-  if (!empty($variables['has_result'])) {
-    $variables['attributes']['class'][] = 'has-result';
-  }
-
-  if (!empty($options['table_class'])) {
-    $variables['attributes']['class'] = array_merge($variables['attributes']['class'], explode(' ', $options['table_class']));
-  }
+  $service->preprocess($variables);
 }

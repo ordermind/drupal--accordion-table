@@ -5,3 +5,7 @@ services:
   accordion_table.drupal_settings_factory:
     class: Drupal\accordion_table\Factory\DrupalSettingsFactory
     arguments: ['@config.factory', '@theme.manager', '@theme_breakpoints_js']
+
+  # Hook handlers
+  accordion_table.hook_handlers.preprocess_views_view_accordiontable:
+    class: Drupal\accordion_table\HookHandlers\PreprocessHandlers\PreprocessViewsViewAccordionTable
