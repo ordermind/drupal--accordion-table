@@ -9,7 +9,7 @@ use Drupal\views\ViewExecutable;
 /**
  * Hook handler for hook_preprocess_views_view_accordiontable().
  */
-class PreprocessViewsViewAccordionTable {
+class PreprocessViewsViewAccordionTableHandler {
 
   public function preprocess(array &$variables): void {
     template_preprocess_views_view_table($variables);

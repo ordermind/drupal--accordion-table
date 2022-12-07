@@ -7,5 +7,11 @@ services:
     arguments: ['@config.factory', '@theme.manager', '@theme_breakpoints_js']
 
   # Hook handlers
+  accordion_table.hook_handlers.theme:
+    class: Drupal\accordion_table\HookHandlers\ThemeHandler
+
+  accordion_table.hook_handlers.preprocess_accordion_table:
+    class: Drupal\accordion_table\HookHandlers\PreprocessHandlers\PreprocessAccordionTableHandler
+
   accordion_table.hook_handlers.preprocess_views_view_accordiontable:
-    class: Drupal\accordion_table\HookHandlers\PreprocessHandlers\PreprocessViewsViewAccordionTable
+    class: Drupal\accordion_table\HookHandlers\PreprocessHandlers\PreprocessViewsViewAccordionTableHandler
