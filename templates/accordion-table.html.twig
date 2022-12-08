@@ -35,6 +35,8 @@
  *   any rows.
  * - no_striping: A boolean indicating that the row should receive no striping.
  * - header_columns: The number of columns in the header.
+ * - responsive: A flag indicating whether table is responsive.
+ * - has_result: Is true if the view has found at least one row, otherwise false.
  *
  * @see template_preprocess_accordion_table()
  */
@@ -76,18 +78,52 @@
   {% if rows %}
     <tbody>
       {% for row in rows %}
+        {% set zebraClass = not no_striping ? cycle(['odd', 'even'], loop.index0) %}
         {%
           set row_classes = [
-            not no_striping ? cycle(['odd', 'even'], loop.index0),
+            'view',
+            zebraClass,
           ]
         %}
-        <tr{{ row.attributes.addClass(row_classes) }}>
+        <tr{{ row.attributes.addClass('view').addClass(zebraClass) }}>
           {% for key, cell in row.cells %}
             <{{ cell.tag }}{{ cell.attributes.addClass('column--' ~ key) }}>
               {{- cell.content -}}
             </{{ cell.tag }}>
           {% endfor %}
         </tr>
+        {% if has_result and responsive %}
+          <tr class="fold {{ zebraClass }}">
+            <td colspan="{{ row.cells| length }}">
+              {% for key, cell in row.cells %}
+                {% if cell.content|render|striptags|trim %}
+                  {% if cell.default_classes %}
+                    {%
+                      set cell_classes = [
+
+                      ]
+                    %}
+                    {% for field in cell.fields %}
+                      {% set cell_classes = cell_classes|merge(['views-field-' ~ field]) %}
+                    {% endfor %}
+                  {% endif %}
+                  {% if key in ['operation', 'operations'] %}
+                    <div{{cell.attributes.addClass(cell_classes)}}>
+                  {% else %}
+                    <div{{cell.attributes.addClass(cell_classes).addClass('field--label-inline clearfix')}}>
+                  {% endif %}
+                  {% if header and key not in['operation', 'operations'] %}
+                    <div class="field__label">{{ header[key].content}}</div>
+                  {% endif %}
+                    <div class="field__items">
+                      {{ cell.content }}
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </td>
+          </tr>
+        {% endif %}
       {% endfor %}
     </tbody>
   {% elseif empty %}

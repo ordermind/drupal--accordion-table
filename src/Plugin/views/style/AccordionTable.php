@@ -113,4 +113,5 @@ class AccordionTable extends Table implements ContainerFactoryPluginInterface {
 
     return $priorities[$lowestPriorityIndex];
   }
+
 }
