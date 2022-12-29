@@ -20,6 +20,7 @@ class PreprocessViewsViewAccordionTableHandler {
 
     $this->addVariables($variables, $view, $options);
     $this->addTableClasses($variables, $options);
+    $this->addTableUniqueId($variables, $options);
   }
 
   protected function addVariables(array &$variables, ViewExecutable $view, array $options): void {
@@ -41,6 +42,14 @@ class PreprocessViewsViewAccordionTableHandler {
     if (!empty($options['table_class'])) {
       $variables['attributes']['class'] = array_merge($variables['attributes']['class'], explode(' ', $options['table_class']));
     }
+  }
+
+  protected function addTableUniqueId(array &$variables, array $options): void {
+    if (empty($options['accordion_table_id'])) {
+      throw new \LogicException('No unique id could be found for the accordion table');
+    }
+
+    $variables['attributes']['data-accordion-table-id'] = $options['accordion_table_id'];
   }
 
 }

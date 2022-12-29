@@ -9,7 +9,11 @@ class ThemeHandler {
   public function execute(array $existing, string $type, string $theme, string $path): array {
     $coreTheme = drupal_common_theme($existing, $type, $theme, $path);
 
-    return ['accordion_table' => $coreTheme['table']];
+    $tableThemeDefinition = $coreTheme['table'];
+    $tableThemeDefinition['variables']['inline_css'] = NULL;
+    $tableThemeDefinition['variables']['column_priorities'] = [];
+
+    return ['accordion_table' => $tableThemeDefinition];
   }
 
 }

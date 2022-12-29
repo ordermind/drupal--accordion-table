@@ -2,6 +2,7 @@
 
 namespace Drupal\accordion_table\Form;
 
+use Drupal\accordion_table\Enum\ColumnPriorityEnum;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Extension\Extension;
 use Drupal\Core\Extension\ThemeHandlerInterface;
@@ -56,8 +57,8 @@ class AccordionTableSettingsForm extends ConfigFormBase {
     // Only low and medium priority need to be mapped to breakpoints - high
     // priority columns are always displayed in the table.
     $priorities = [
-      'low',
-      'medium',
+      ColumnPriorityEnum::LOW,
+      ColumnPriorityEnum::MEDIUM,
     ];
 
     $form['priority_breakpoint_mapping'] = [
@@ -119,4 +120,5 @@ class AccordionTableSettingsForm extends ConfigFormBase {
       'accordion_table.settings',
     ];
   }
+
 }

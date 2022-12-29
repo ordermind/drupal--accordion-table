@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Drupal\accordion_table\HookHandlers\PreprocessHandlers;
 
+use Drupal\Core\Template\Attribute;
+
 /**
  * Hook handler for hook_preprocess_accordion_table().
  */
@@ -14,6 +16,7 @@ class PreprocessAccordionTableHandler {
 
     $this->addVariables($variables);
     $this->addTableClasses($variables);
+    $this->addColumnPriorities($variables);
   }
 
   protected function addVariables(array &$variables): void {
@@ -30,6 +33,25 @@ class PreprocessAccordionTableHandler {
     }
     if (!empty($variables['table_classes'])) {
       $variables['attributes']['class'] = array_merge($variables['attributes']['class'], (array) $variables['table_classes']);
+    }
+  }
+
+  protected function addColumnPriorities(array &$variables): void {
+    if (empty($variables['column_priorities'])) {
+      return;
+    }
+
+    foreach ($variables['column_priorities'] as $key => $priority) {
+      if (!empty($variables['header'][$key]['attributes'] && $variables['header'][$key]['attributes'] instanceof Attribute)) {
+        $variables['header'][$key]['attributes']->addClass("priority-${priority}");
+      }
+
+      foreach ($variables['rows'] as &$row) {
+        if (!empty($row['cells'][$key]['attributes'] && $row['cells'][$key]['attributes'] instanceof Attribute)) {
+          $row['cells'][$key]['attributes']->addClass("priority-${priority}");
+        }
+      }
+      unset($row);
     }
   }
 

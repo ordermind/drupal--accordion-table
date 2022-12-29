@@ -33,17 +33,17 @@
   }
 
   function enableExpandTrigger() {
-    const viewRows = document.querySelectorAll(rowSelector);
+    const regularRows = document.querySelectorAll(rowSelector);
 
-    viewRows.forEach((row) => {
+    regularRows.forEach((row) => {
       row.addEventListener('click', toggleOpen);
     });
   }
 
   function disableExpandTrigger() {
-    const viewRows = document.querySelectorAll(rowSelector);
+    const regularRows = document.querySelectorAll(rowSelector);
 
-    viewRows.forEach((row) => {
+    regularRows.forEach((row) => {
       row.removeEventListener('click', toggleOpen);
     });
   }

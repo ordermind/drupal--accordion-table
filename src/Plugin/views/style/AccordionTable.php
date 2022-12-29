@@ -2,8 +2,10 @@
 
 namespace Drupal\accordion_table\Plugin\views\style;
 
+use Drupal\accordion_table\Enum\ViewsColumnPriorityEnum;
 use Drupal\accordion_table\Factory\CssFactory;
 use Drupal\accordion_table\Factory\DrupalSettingsFactory;
+use Drupal\Component\Utility\Html;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\views\Plugin\views\style\Table;
@@ -81,13 +83,16 @@ class AccordionTable extends Table implements ContainerFactoryPluginInterface {
   public function render() {
     $build = parent::render();
 
+    $uniqueId = Html::getUniqueId('accordion-table');
+    $build[0]['#view']->style_plugin->options['accordion_table_id'] = $uniqueId;
+
     $build['#attached']['library'][] = 'accordion_table/accordion_table';
     $build['#attached']['drupalSettings']['accordion_table'] = $this->drupalSettingsFactory->create();
 
     $build['#attached']['html_head'][] = [
       [
         '#tag' => 'style',
-        '#value' => $this->cssFactory->create($this->getLowestColumnPriority()),
+        '#value' => $this->cssFactory->create($this->getLowestColumnPriority(), $uniqueId),
       ],
       'accordion_table',
     ];
@@ -97,8 +102,8 @@ class AccordionTable extends Table implements ContainerFactoryPluginInterface {
 
   private function getLowestColumnPriority() {
     $priorities = [
-      'priority-low',
-      'priority-medium',
+      ViewsColumnPriorityEnum::LOW,
+      ViewsColumnPriorityEnum::MEDIUM,
       '',
     ];
 

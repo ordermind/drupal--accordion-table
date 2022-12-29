@@ -2,6 +2,8 @@
 
 namespace Drupal\accordion_table\Element;
 
+use Drupal\accordion_table\Enum\ColumnPriorityEnum;
+use Drupal\Component\Utility\Html;
 use Drupal\Core\Render\Element\Table;
 
 /**
@@ -29,31 +31,24 @@ class AccordionTable extends Table {
 
     $build = parent::preRenderTable($element);
 
+    $uniqueId = Html::getUniqueId('accordion-table');
+    $build['#attributes']['data-accordion-table-id'] = $uniqueId;
+
+    $build['#inline_css'] = $cssFactory->create(static::getLowestColumnPriority($build['#column_priorities'] ?? []), $uniqueId);
+
     $build['#attached']['library'][] = 'accordion_table/accordion_table';
     $build['#attached']['drupalSettings']['accordion_table'] = $drupalSettingsFactory->create();
-
-    $build['#attached']['html_head'][] = [
-      [
-        '#tag' => 'style',
-        '#value' => $cssFactory->create(static::getLowestColumnPriority($build['#columnSettings'] ?? [])),
-      ],
-      'accordion_table',
-    ];
 
     return $build;
   }
 
-  private static function getLowestColumnPriority(array $columnSettings) {
-    $priorities = [
-      'low',
-      'medium',
-      'high',
-    ];
+  private static function getLowestColumnPriority(array $columnPriorities) {
+    $priorities = ColumnPriorityEnum::getValues();
 
     $lowestPriorityIndex = count($priorities) - 1;
 
-    foreach ($columnSettings as $singleColumnSettings) {
-      $priorityIndex = array_search($singleColumnSettings['priority'], $priorities);
+    foreach ($columnPriorities as $priority) {
+      $priorityIndex = array_search($priority, $priorities);
       if ($priorityIndex !== FALSE && $priorityIndex < $lowestPriorityIndex) {
         $lowestPriorityIndex = $priorityIndex;
       }

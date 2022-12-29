@@ -37,10 +37,14 @@
  * - header_columns: The number of columns in the header.
  * - responsive: A flag indicating whether table is responsive.
  * - has_result: Is true if the view has found at least one row, otherwise false.
+ * - inline_css: Inline css for the accordion table.
  *
  * @see template_preprocess_accordion_table()
  */
 #}
+{% if(inline_css) %}
+  <style>{{ inline_css | raw }}</style>
+{% endif %}
 <table{{ attributes }}>
   {% if caption %}
     <caption>{{ caption }}</caption>
@@ -97,16 +101,11 @@
             <td colspan="{{ row.cells| length }}">
               {% for key, cell in row.cells %}
                 {% if cell.content|render|striptags|trim %}
-                  {% if cell.default_classes %}
-                    {%
-                      set cell_classes = [
-
-                      ]
-                    %}
-                    {% for field in cell.fields %}
-                      {% set cell_classes = cell_classes|merge(['views-field-' ~ field]) %}
-                    {% endfor %}
-                  {% endif %}
+                  {%
+                    set cell_classes = [
+                      'column'
+                    ]
+                  %}
                   {% if key in ['operation', 'operations'] %}
                     <div{{cell.attributes.addClass(cell_classes)}}>
                   {% else %}
