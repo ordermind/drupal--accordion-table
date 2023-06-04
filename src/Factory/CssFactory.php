@@ -38,7 +38,7 @@ class CssFactory {
     $lowPriorityMediaQuery = $this->getLowPriorityMediaQuery($breakpoints, $currentThemeMapping, $lowestPriority);
     $mediumPriorityMediaQuery = $this->getMediumPriorityMediaQuery($breakpoints, $currentThemeMapping, $lowestPriority);
 
-    $uniqueIdAttribute = "data-accordion-table-id=\"${uniqueId}\"";
+    $uniqueIdAttribute = "data-accordion-table-id=\"{$uniqueId}\"";
 
     return <<<EOT
 

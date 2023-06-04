@@ -43,12 +43,12 @@ class PreprocessAccordionTableHandler {
 
     foreach ($variables['column_priorities'] as $key => $priority) {
       if (!empty($variables['header'][$key]['attributes'] && $variables['header'][$key]['attributes'] instanceof Attribute)) {
-        $variables['header'][$key]['attributes']->addClass("priority-${priority}");
+        $variables['header'][$key]['attributes']->addClass("priority-{$priority}");
       }
 
       foreach ($variables['rows'] as &$row) {
         if (!empty($row['cells'][$key]['attributes'] && $row['cells'][$key]['attributes'] instanceof Attribute)) {
-          $row['cells'][$key]['attributes']->addClass("priority-${priority}");
+          $row['cells'][$key]['attributes']->addClass("priority-{$priority}");
         }
       }
       unset($row);
