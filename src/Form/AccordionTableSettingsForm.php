@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Drupal\accordion_table\Form;
 
 use Drupal\accordion_table\Enum\ColumnPriorityEnum;
