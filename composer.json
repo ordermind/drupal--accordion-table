@@ -2,6 +2,7 @@
     "name": "drupal/accordion_table",
     "type": "drupal-module--tengstrom",
     "require": {
+        "drupal/core": "^9 || ^10",
         "drupal/theme_breakpoints_js": "^1.1"
     }
 }
