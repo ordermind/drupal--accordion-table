@@ -33,7 +33,7 @@ class AccordionTable extends Table {
 
     $build = parent::preRenderTable($element);
 
-    $uniqueId = Html::getUniqueId('accordion-table');
+    $uniqueId = Html::getUniqueId('accordion-table--custom-element');
     $build['#attributes']['data-accordion-table-id'] = $uniqueId;
 
     $build['#inline_css'] = $cssFactory->create(static::getLowestColumnPriority($build['#column_priorities'] ?? []), $uniqueId);

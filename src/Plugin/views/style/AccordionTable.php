@@ -85,7 +85,9 @@ class AccordionTable extends Table implements ContainerFactoryPluginInterface {
   public function render() {
     $build = parent::render();
 
-    $uniqueId = Html::getUniqueId('accordion-table');
+    $view = $build[0]['#view'];
+    $uniqueId = 'accordion-table--views-' . $view->id() . '-' . $view->getDisplay()->getPluginId();
+
     $build[0]['#view']->style_plugin->options['accordion_table_id'] = $uniqueId;
 
     $build['#attached']['library'][] = 'accordion_table/accordion_table';
