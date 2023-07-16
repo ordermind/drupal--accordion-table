@@ -7,7 +7,6 @@ namespace Drupal\accordion_table\Plugin\views\style;
 use Drupal\accordion_table\Enum\ViewsColumnPriorityEnum;
 use Drupal\accordion_table\Factory\CssFactory;
 use Drupal\accordion_table\Factory\DrupalSettingsFactory;
-use Drupal\Component\Utility\Html;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\views\Plugin\views\style\Table;
