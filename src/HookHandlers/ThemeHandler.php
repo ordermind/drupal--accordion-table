@@ -12,6 +12,7 @@ class ThemeHandler {
     $tableThemeDefinition = $coreTheme['table'];
     $tableThemeDefinition['variables']['inline_css'] = NULL;
     $tableThemeDefinition['variables']['column_priorities'] = [];
+    $tableThemeDefinition['variables']['separate_operations'] = FALSE;
 
     return ['accordion_table' => $tableThemeDefinition];
   }

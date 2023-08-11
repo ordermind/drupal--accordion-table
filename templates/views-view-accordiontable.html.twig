@@ -118,7 +118,7 @@
         {% endfor %}
       </tr>
       {% if has_result and responsive %}
-        <tr class="fold separate-operations-buttons {{ (index + 1) % 2 == 0 ? 'even' : 'odd' }}">
+        <tr class="fold {{ (index + 1) % 2 == 0 ? 'even' : 'odd' }} separate-operations-buttons">
           <td colspan="{{ row.columns| length }}">
           {% for key, column in row.columns %}
             {% if column.content[0].field_output|render|striptags|trim %}

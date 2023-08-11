@@ -38,6 +38,7 @@
  * - responsive: A flag indicating whether table is responsive.
  * - has_result: Is true if the view has found at least one row, otherwise false.
  * - inline_css: Inline css for the accordion table.
+ * - separate_operations: Is true if the operations buttons should be separate, otherwise false.
  *
  * @see template_preprocess_accordion_table()
  */
@@ -89,7 +90,7 @@
             zebraClass,
           ]
         %}
-        <tr{{ row.attributes.addClass('view').addClass(zebraClass) }}>
+        <tr{{ row.attributes.addClass('view').addClass(zebraClass).addClass(separate_operations ? 'separate-operations-buttons' : null) }}>
           {% for key, cell in row.cells %}
             <{{ cell.tag }}{{ cell.attributes.addClass('column--' ~ key) }}>
               {{- cell.content -}}
@@ -97,7 +98,7 @@
           {% endfor %}
         </tr>
         {% if has_result and responsive %}
-          <tr class="fold {{ zebraClass }}">
+          <tr class="fold {{ zebraClass }} separate-operations-buttons">
             <td colspan="{{ row.cells| length }}">
               {% for key, cell in row.cells %}
                 {% if cell.content|render|striptags|trim %}
