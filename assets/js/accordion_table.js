@@ -60,7 +60,10 @@
     attach: (context, settings) => {
       moduleSettings = settings.accordion_table;
       if (!moduleSettings.priority_mq_mapping) {
-        console.error('You need to configure the settings for the accordion_table module before using it.');
+        const errorMessage = 'You need to configure the settings for the accordion_table module before using it.';
+
+        console.error(errorMessage);
+        alert(errorMessage);
 
         return;
       }
