@@ -3,7 +3,7 @@ description: Displays tables as an accordion
 package: Tengström Modules
 
 type: module
-core_version_requirement: ^9 || ^10 || ^11
+core_version_requirement: ^10 || ^11
 configure: accordion_table.settings_form
 
 dependencies:
