@@ -3,6 +3,6 @@
     "type": "drupal-module--tengstrom",
     "require": {
         "drupal/core": "^10 || ^11",
-        "drupal/theme_breakpoints_js": "^1.1"
+        "drupal/theme_breakpoints_js": "8.x-1.x-dev#09c7dac6"
     }
 }
