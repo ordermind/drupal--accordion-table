@@ -1,8 +1,15 @@
 {
     "name": "drupal/accordion_table",
     "type": "drupal-module--tengstrom",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:ordermind/drupal--theme-breakpoints-js.git",
+            "no-api": true
+        }
+    ],
     "require": {
         "drupal/core": "^10 || ^11",
-        "drupal/theme_breakpoints_js": "1.x-dev#09c7dac6"
+        "drupal/theme_breakpoints_js": "1.x-dev"
     }
 }
