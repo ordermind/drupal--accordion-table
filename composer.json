@@ -10,6 +10,6 @@
     ],
     "require": {
         "drupal/core": "^10 || ^11",
-        "drupal/theme_breakpoints_js": "1.x-dev"
+        "drupal/theme_breakpoints_js": "dev-master"
     }
 }
